@@ -49,7 +49,7 @@ Download()
     echo "Start Download......"
     if test -f "config.json"
     then
-        wget -c -t 5 --quiet "https://download.npool.io/linux-${arch_type}.tar.gz" && tar zxvf "linux-${arch_type}.tar.gz" && mv "linux-${arch_type}/npool" ./ && rm -rf "linux-${arch_type}" && rm -f nknd
+        wget --no-check-certificate -c -t 5 --quiet "https://download.npool.io/linux-${arch_type}.tar.gz" && tar zxvf "linux-${arch_type}.tar.gz" && mv "linux-${arch_type}/npool" ./ && rm -rf "linux-${arch_type}" && rm -f nknd
        if test -f "wallet.json"
        then
             start_shell="${cur_dir}/npool --appkey ${app_key} --wallet ${cur_dir}/wallet.json --password-file ${cur_dir}/wallet.pswd"
@@ -58,7 +58,7 @@ Download()
        fi
         work_dir="${cur_dir}"
     else
-        wget -c -t 5 --quiet  "https://download.npool.io/linux-${arch_type}.tar.gz" && tar zxvf "linux-${arch_type}.tar.gz"
+        wget --no-check-certificate -c -t 5 --quiet  "https://download.npool.io/linux-${arch_type}.tar.gz" && tar zxvf "linux-${arch_type}.tar.gz"
         start_shell="${cur_dir}/linux-${arch_type}/npool --appkey ${app_key}"
         work_dir="${cur_dir}/linux-${arch_type}"
     fi
